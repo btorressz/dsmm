@@ -1,23 +1,27 @@
 // No imports needed: web3, anchor, pg, and more are globally available
 
 describe("DSMM Staking Program", () => {
-  let poolKp: web3.Keypair;
-  let stakerKp: web3.Keypair;
+  let poolKp;
+  let stakerKp;
+  let userTokenAccount;
+  let tokenMint;
 
   before(async () => {
     poolKp = new web3.Keypair();
     stakerKp = new web3.Keypair();
+    userTokenAccount = new web3.Keypair();
+
+    // Example Token Mint (Wrapped SOL or another SPL token)
+    tokenMint = new web3.PublicKey("So11111111111111111111111111111111111111112");
   });
 
-  //TODO: FIX
   it("Initialize Pool", async () => {
+    const bump = 1; // Convert BN to native number (u8)
+    const makerFeeRate = 10; // Convert BN to number (u16)
+    const takerFeeRate = 20; // Convert BN to number (u16)
+
     const txHash = await pg.program.methods
-      .initializePool(
-        new BN(1), // bump
-        new web3.PublicKey("So11111111111111111111111111111111111111112"), // Token Mint (example: wrapped SOL)
-        new BN(10), // Maker Fee Rate
-        new BN(20) // Taker Fee Rate
-      )
+      .initializePool(bump, tokenMint, makerFeeRate, takerFeeRate)
       .accounts({
         pool: poolKp.publicKey,
         admin: pg.wallet.publicKey,
@@ -25,7 +29,7 @@ describe("DSMM Staking Program", () => {
       })
       .signers([poolKp])
       .rpc();
-    
+
     console.log(`Pool initialized: ${txHash}`);
 
     const poolAccount = await pg.program.account.pool.fetch(poolKp.publicKey);
@@ -34,8 +38,7 @@ describe("DSMM Staking Program", () => {
   });
 
   it("Stake Tokens", async () => {
-    const userTokenAccount = new web3.Keypair();
-    const amount = new BN(1000); // Stake 1000 tokens
+    const amount = new BN(1000); 
 
     const txHash = await pg.program.methods
       .stake(amount)
@@ -59,7 +62,7 @@ describe("DSMM Staking Program", () => {
   });
 
   it("Withdraw Tokens", async () => {
-    const amountToWithdraw = new BN(500); // Withdraw 500 tokens
+    const amountToWithdraw = new BN(500); 
 
     const txHash = await pg.program.methods
       .withdraw(amountToWithdraw)
