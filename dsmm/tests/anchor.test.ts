@@ -9,6 +9,7 @@ describe("DSMM Staking Program", () => {
     stakerKp = new web3.Keypair();
   });
 
+  //TODO: FIX
   it("Initialize Pool", async () => {
     const txHash = await pg.program.methods
       .initializePool(
