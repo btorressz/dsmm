@@ -15,3 +15,24 @@
 ✅ **Multi-Signature Governance** – Ensures security for major protocol updates.  
 
 ---
+
+## 📜 Smart Contract Overview
+
+### **Main Instructions**
+| Function | Description |
+|----------|------------|
+| `initialize_pool` | Creates the staking pool with admin-defined parameters. |
+| `stake` | Users deposit funds into the pool. |
+| `withdraw` | Users withdraw staked funds (after minimum staking duration). |
+| `record_trade_profit` | Market-makers submit their trading profits to the pool. |
+| `distribute_rewards` | Distributes rewards based on a weighted staking model. |
+| `auto_compound_rewards` | Allows stakers to automatically reinvest their rewards. |
+| `update_fee_structure` | Adjusts maker/taker fee rates via governance. |
+| `adjust_fee_based_on_performance` | Dynamically updates fees based on market conditions. |
+| `compensate_lp_losses` | Uses an impermanent loss protection fund to compensate LPs. |
+| `emergency_withdraw` | Enables users to withdraw in case of emergencies. |
+| `prevent_flash_loans` | Prevents flash loan exploits by enforcing a minimum staking duration. |
+| `execute_governance_action` | Executes multi-signature governance proposals. |
+
+---
+
