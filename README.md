@@ -4,6 +4,10 @@
 
 **DSMM** is a **Solana-based staking pool** that provides capital to high-frequency traders (HFTs) for **market-making strategies**. Users stake **USDC, SOL, or SPL tokens**, and their funds are used to **provide deep liquidity** on Solana DEXes. In return, stakers receive **dynamic yield** based on market-maker performance.
 
+---
+
+**devnet:** (https://explorer.solana.com/address/6RqtyVQkmD2ECJ95MAB5QejNhDcWd5b63bkHxedE9BWS?cluster=devnet)
+
 ## 🚀 Features
 
 ✅ **Optimized for HFT Strategies** – Funds are allocated to professional traders for market-making.  
